@@ -7,7 +7,14 @@ import { Enlace } from './Enlace';
 import { MyAlert } from './MyAlert';
 import { MyDropDown } from './MyDropDown';
 
+let nombres = ['Jairo', 'Michelle', 'Patricia', 'Jorge', 'Jesus'];
+
 function App() {
+
+    let listNombres = nombres.map((valor, indice, arreglo) => { // valor, indice, arreglo
+        return <li key={indice}>{valor}</li>;
+    });
+
     return (
         <>
             <MyAlert />
@@ -18,6 +25,16 @@ function App() {
             <Enlace href={"https://google.cl"} texto={"Google"} className={"links"} edad={39} />
             <Enlace href={"https://facebook.com"} texto={"Facebook"} className={"links"} />
             <Enlace href={"https://instagram.com"} texto={"Instagram"} className={"links"} />
+            <ol>
+                {listNombres}
+            </ol>
+            <ul>
+                {
+                    nombres.sort((a, b) => a > b ? 1 : -1).map((valor, indice, arreglo) => { // valor, indice, arreglo
+                        return <li key={indice}>{valor}</li>;
+                    })
+                }
+            </ul>
         </>
     )
 }
